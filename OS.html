@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mon OS</title>
+    <style>
+        #editor,
+        #output {
+            width: 100%;
+            height: 400px;
+        }
+
+        button {
+            background-color: red;
+        }
+
+        button:hover {
+            background-color: green;
+        }
+
+        button:active {
+            background-color: blue;
+        }
+
+        button:focus {
+            background-color: yellow;
+        }
+
+        button:disabled {
+            background-color: grey;
+        }
+
+        body {
+            background-color: #722828;
+        }
+
+        textarea {
+            background-color: #722828;
+            color: white;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+            padding: 10px;
+            overflow-x: auto;
+        }
+
+        /* Add any additional styles for code highlighting here */
+        pre code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+        }
+
+        .token.comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata {
+            color: rgb(19, 94, 170);
+        }
+
+        .token.punctuation {
+            color: #f8f8f2;
+        }
+
+        .namespace {
+                        opacity: 0.7;
+                    }
+
+                    .token.property,
+                    .token.tag,
+                    .token.constant,
+                    .token.symbol,
+                    .token.deleted {
+                        color: #f92672;
+                    }
+
+                    #toolbar {
+                        background-color: #f0f0f0;
+                        padding: 10px;
+                    }
+
+                    #toolbar button {
+                        margin-right: 10px;
+                    }
+                </style>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" />
+            </head>
+            <body>
+                <div id="toolbar">
+                    <button onclick="runCode()">Run Code</button>
+                    <button onclick="openFile('style.css')">Edit CSS</button>
+                    <button onclick="openFile('script.js')">Edit JavaScript</button>
+                    <button onclick="backToHtml()">Back to HTML</button>
+                    <button onclick="saveFile()">Save</button>
+                </div>
+                <pre id="editor" contenteditable="true"><code class="language-javascript"></code></pre>
+                <iframe id="output"></iframe>
+
+                <style>
+                    #toolbar {
+                        background-color: #f0f0f0; /* Change this to the color you want */
+                        padding: 10px;
+                    }
+                    #toolbar button {
+                        margin-right: 10px;
+                    }
+                </style>
+
+                
+
+                <script>
+                    function runCode() {
+                        const code = document.getElementById('editor').textContent;
+                        const iframe = document.getElementById('output');
+                        iframe.src = 'data:text/html;charset=utf-8,' + encodeURI(code);
+                    }
+                    function openFile(filename) {
+                // Save the current code to localStorage
+                localStorage.setItem('html', document.getElementById('editor').textContent);
+
+                // Load the content of the specified file into the editor
+                const code = localStorage.getItem(filename);
+                if (code) {
+                    document.getElementById('editor').textContent = code;
+                }
+            }
+
+            function backToHtml() {
+                // Load the saved HTML code from localStorage
+                document.getElementById('editor').textContent = localStorage.getItem('html');
+            }
+
+        function backToHtml() {
+            // Load the saved code from localStorage
+            document.getElementById('editor').textContent = localStorage.getItem('html');
+        }
+
+        function saveFile(filename = 'mycode.html') {
+            const code = document.getElementById('editor').textContent;
+            const blob = new Blob([code], {type: "text/plain;charset=utf-8"});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.click();
+        }
+
+    </script>
+</body>
+</html>
