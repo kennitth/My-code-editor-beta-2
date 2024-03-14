@@ -94,7 +94,7 @@
                     <button onclick="openFile('script.js')">Edit JavaScript</button>
                     <button onclick="backToHtml()">Back to HTML</button>
                     <button onclick="saveFile()">Save</button>
-                    <button onclick="loadfile()">Load</button>
+                    <button onclick="Fullscreen()">Load</button>
                 </div>
                 <pre id="editor" contenteditable="true"><code class="language-javascript"></code></pre>
                 <iframe id="output"></iframe>
@@ -148,7 +148,7 @@
             link.click();
         }
 
-        function fullscreen() {
+        function Fullscreen() {
             $('#theButton').click(function() {
     $('#theDiv').css({
         position: 'fixed',
