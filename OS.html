@@ -94,6 +94,8 @@
                     <button onclick="openFile('script.js')">Edit JavaScript</button>
                     <button onclick="backToHtml()">Back to HTML</button>
                     <button onclick="saveFile()">Save</button>
+                    <button onclick="Loadfile()">Load</button>
+                    <button onclick="fullscreen()">Fullscreen</button>
                 </div>
                 <pre id="editor" contenteditable="true"><code class="language-javascript"></code></pre>
                 <iframe id="output"></iframe>
@@ -146,6 +148,35 @@
             link.download = filename;
             link.click();
         }
-</script>
+
+        function Loadfile() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const code = reader.result;
+                    document.getElementById('editor').textContent = code;
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+
+        function fullscreen() {
+            const iframe = document.getElementById('output');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { /* Firefox */
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { /* IE/Edge */
+                iframe.msRequestFullscreen();
+            }
+        }
+
+    </script>
 </body>
 </html>
