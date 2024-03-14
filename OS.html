@@ -94,7 +94,6 @@
                     <button onclick="openFile('script.js')">Edit JavaScript</button>
                     <button onclick="backToHtml()">Back to HTML</button>
                     <button onclick="saveFile()">Save</button>
-                    <button onclick="Fullscreen()">Load</button>
                 </div>
                 <pre id="editor" contenteditable="true"><code class="language-javascript"></code></pre>
                 <iframe id="output"></iframe>
@@ -147,18 +146,6 @@
             link.download = filename;
             link.click();
         }
-
-        function Fullscreen() {
-            $('#theButton').click(function() {
-    $('#theDiv').css({
-        position: 'fixed',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        zIndex: 999
-    });
-});
 </script>
 </body>
 </html>
