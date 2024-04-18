@@ -1,0 +1,11 @@
+{
+  "name": "Mon OS",
+  "version": "0.2.0",
+  "description": "This is a Code editor running directly in your browser! this code editor was made in just LESS THEN 1 DAY and its in beta 2",
+  "manifest_version": 3,
+  "author": "Kennitth",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Mon OS"
+  }
+}
